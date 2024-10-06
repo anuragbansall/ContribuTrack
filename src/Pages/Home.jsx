@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import Container from '../Components/Container';
 import DetailForm from '../Components/DetailForm';
 import ContributionCard from '../Components/ContributionCard';
-import Axios from '../utils/Axios';
+import AxiosInstance from '../utils/Axios';
 import UsernameContext from '../Context/UsernameContext';
 
 function Home() {
@@ -14,7 +14,7 @@ function Home() {
     const fetchData = async () => {
         try {
             setLoading(true);
-            const response = await Axios.get('/OSLeaderboard');
+            const response = await AxiosInstance.get('/OSLeaderboard');
             setUserData(response.data.leaderboard);
             setLoading(false);
         } catch (error) {
