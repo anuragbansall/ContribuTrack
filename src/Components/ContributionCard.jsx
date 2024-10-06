@@ -27,8 +27,8 @@ function ContributionCard({ cardData }) {
     }
 
     return (
-        <div className='max-w-full overflow-x-hidden'>
-            <div ref={cardRef} className='w-[20rem] max-w-full h-[25rem] bg-[#fff] text-slate-800 flex flex-col gap-2 items-center p-4 rounded-md relative'>
+        <div className='max-w-full'>
+            <div ref={cardRef} className='w-[20rem] overflow-x-hidden max-w-full h-[25rem] bg-[#fff] text-slate-800 flex flex-col gap-2 items-center p-4 rounded-md relative hover:-translate-y-1 duration-200 shadow-lg'>
                 <div className='flex-shrink-0 w-[8rem] max-w-full p-1 bg-[#FB923C] rounded-full overflow-hidden'>
                     <img 
                         src={cardData.avatar_url} 
@@ -37,7 +37,7 @@ function ContributionCard({ cardData }) {
                         crossOrigin="anonymous" 
                     />
                 </div>
-                <h3 className='text-xl font-semibold'>{cardData.login}</h3>
+                <a href={`https://github.com/${cardData.login}`} target='_blank' className='text-xl font-semibold'>@{cardData.login}</a>
                 <div className='flex flex-wrap items-center justify-center gap-x-6'>
                     <p className='flex items-center gap-x-2 font-semibold text-lg'>
                         <span className='text-[#FB923C]'>
