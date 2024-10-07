@@ -24,8 +24,15 @@ function Home() {
     };
 
     const filterDataByName = (name) => {
-        const filtered = userData.filter(user => user?.login?.toLowerCase() === name.toLowerCase());
-        setFilteredData(filtered[0] || null);
+        const userIndex = userData.findIndex(user => user?.login?.toLowerCase() === name.toLowerCase());
+        
+        if (userIndex !== -1) {
+            const filtered = userData[userIndex];
+            const rank = userIndex + 1;
+            setFilteredData({ ...filtered, rank });
+        } else {
+            setFilteredData(null);
+        }
     };
 
     useEffect(() => {

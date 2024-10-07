@@ -38,6 +38,7 @@ function ContributionCard({ cardData }) {
                     />
                 </div>
                 <a href={`https://github.com/${cardData.login}`} target='_blank' className='text-xl font-semibold'>@{cardData.login}</a>
+                <h2 className='text-xl font-semibold italic'>Rank: #{cardData?.rank}</h2>
                 <div className='flex flex-wrap items-center justify-center gap-x-6'>
                     <p className='flex items-center gap-x-2 font-semibold text-lg'>
                         <span className='text-[#FB923C]'>
