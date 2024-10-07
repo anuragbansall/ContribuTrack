@@ -24,7 +24,7 @@ function Home() {
     };
 
     const filterDataByName = (name) => {
-        const userIndex = userData.findIndex(user => user?.login?.toLowerCase() === name.toLowerCase());
+        const userIndex = userData.findIndex(user => user?.login?.trim().toLowerCase() === name.trim().toLowerCase());
         
         if (userIndex !== -1) {
             const filtered = userData[userIndex];
