@@ -28,7 +28,7 @@ function ContributionCard({ cardData }) {
 
     return (
         <div className='max-w-full'>
-            <div ref={cardRef} className='w-[20rem] overflow-x-hidden max-w-full h-[25rem] bg-[#fff] text-slate-800 flex flex-col gap-2 items-center p-4 rounded-md relative hover:-translate-y-1 duration-200 shadow-lg'>
+            <div ref={cardRef} className='w-[20rem] overflow-x-hidden max-w-full h-[25rem] bg-[#fff] text-slate-800 flex flex-col gap-2 items-center p-4 rounded-md relative hover:-translate-y-1 duration-200 shadow-lg border-b-[8px] border-[#FB923C]'>
                 <div className='flex-shrink-0 w-[8rem] max-w-full p-1 bg-[#FB923C] rounded-full overflow-hidden'>
                     <img 
                         src={cardData.avatar_url} 
