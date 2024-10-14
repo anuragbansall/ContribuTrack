@@ -2,50 +2,9 @@ import React, { useContext, useEffect, useState } from 'react';
 import Container from '../Components/Container';
 import DetailForm from '../Components/DetailForm';
 import ContributionCard from '../Components/ContributionCard';
-import AxiosInstance from '../utils/Axios';
-import UsernameContext from '../Context/UsernameContext';
+import { Outlet } from 'react-router-dom';
 
 function Home() {
-    const { username } = useContext(UsernameContext);
-    const [userData, setUserData] = useState([]);
-    const [filteredData, setFilteredData] = useState(null);
-    const [loading, setLoading] = useState(true);
-
-    const fetchData = async () => {
-        try {
-            setLoading(true);
-            const response = await AxiosInstance.get('/OSLeaderboard');
-            setUserData(response.data.leaderboard);
-            setLoading(false);
-        } catch (error) {
-            console.error(error);
-            setLoading(false);
-        }
-    };
-
-    const filterDataByName = (name) => {
-        const userIndex = userData.findIndex(user => user?.login?.trim().toLowerCase() === name.trim().toLowerCase());
-        
-        if (userIndex !== -1) {
-            const filtered = userData[userIndex];
-            const rank = userIndex + 1;
-            setFilteredData({ ...filtered, rank });
-        } else {
-            setFilteredData(null);
-        }
-    };
-
-    useEffect(() => {
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        if (username) {
-            filterDataByName(username);
-        } else {
-            setFilteredData(null);
-        }
-    }, [userData, username]);
 
     return (
         <Container>
@@ -54,13 +13,7 @@ function Home() {
                     <DetailForm />
                 </div>
                 <div className='md:w-1/2 flex justify-center'>
-                    {loading ? (
-                        <h2>Loading...</h2>
-                    ) : (
-                        <ContributionCard
-                            cardData={filteredData}
-                        />
-                    )}
+                    <Outlet />
                 </div>
             </div>
         </Container>

@@ -1,21 +1,16 @@
 import React, { useState, useContext } from 'react'
 import Input from './Input'
 import Button from './Button'
-import UsernameContext from '../Context/UsernameContext'
+import { useNavigate } from 'react-router-dom'
 
 function DetailForm() {
 
     const [usernameVal, setUsernameVal] = useState('')
-
-    const {setUsername} = useContext(UsernameContext)
-
-    const handleFindDetails = () => {
-        setUsername(usernameVal)
-    }
+    const navigate = useNavigate()
 
     const handleFormSubmit = (event) => {
         event.preventDefault()
-        handleFindDetails()
+        navigate(`/${usernameVal}`)
     }
 
   return (
@@ -34,7 +29,6 @@ function DetailForm() {
             <Button
                 label="Fetch Details"
                 className='w-full'
-                handleFunc={handleFindDetails}
             />
         </form>
     </div>
